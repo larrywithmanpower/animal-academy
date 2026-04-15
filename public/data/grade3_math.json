@@ -1,0 +1,53 @@
+{
+  "questions": [
+    {
+      "id": "g3m_001",
+      "question": "24 × 15 = ?",
+      "image": null,
+      "options": ["340", "350", "360", "370"],
+      "answer": 2
+    },
+    {
+      "id": "g3m_002",
+      "question": "144 ÷ 12 = ?",
+      "image": null,
+      "options": ["10", "11", "12", "13"],
+      "answer": 2
+    },
+    {
+      "id": "g3m_003",
+      "question": "一個正方形的周長是 20 公分，它的邊長是幾公分？",
+      "image": null,
+      "options": ["4 公分", "5 公分", "6 公分", "8 公分"],
+      "answer": 1
+    },
+    {
+      "id": "g3m_004",
+      "question": "3/4 + 1/4 = ?",
+      "image": null,
+      "options": ["2/4", "4/4（即1）", "4/8", "3/8"],
+      "answer": 1
+    },
+    {
+      "id": "g3m_005",
+      "question": "下列哪個數是質數？",
+      "image": null,
+      "options": ["1", "4", "7", "9"],
+      "answer": 2
+    },
+    {
+      "id": "g3m_006",
+      "question": "一個長方形長 8 cm，寬 5 cm，面積是多少？",
+      "image": null,
+      "options": ["30 cm²", "35 cm²", "40 cm²", "45 cm²"],
+      "answer": 2
+    },
+    {
+      "id": "g3m_007",
+      "question": "2³ = ?（2 的 3 次方）",
+      "image": null,
+      "options": ["6", "8", "9", "12"],
+      "answer": 1
+    }
+  ]
+}

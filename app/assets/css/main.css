@@ -1,0 +1,218 @@
+/* ===== 全域 CSS 變數 ===== */
+:root {
+  --color-primary: #4CAF50;
+  --color-primary-dark: #388E3C;
+  --color-secondary: #2196F3;
+  --color-text: #212121;
+  --color-text-muted: #757575;
+  --color-surface: #F5F5F5;
+  --color-border: #E0E0E0;
+  --color-bg: #FAFAFA;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC',
+    '微軟正黑體', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  min-height: 100dvh;
+}
+
+/* ===== 通用按鈕樣式 ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+  width: 100%;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn--secondary {
+  background: var(--color-secondary);
+  color: white;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text-muted);
+  border: 2px solid var(--color-border);
+}
+
+.btn--white {
+  background: white;
+  color: var(--color-text);
+}
+
+/* ===== PWA 更新通知條 ===== */
+.update-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: #1565C0;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+.update-banner__btn {
+  padding: 0.35rem 0.9rem;
+  background: white;
+  color: #1565C0;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 0.85rem;
+}
+
+/* ===== iOS 安裝引導 ===== */
+.ios-install-guide {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: white;
+  border-top: 1px solid var(--color-border);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.35s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.ios-install-guide__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.ios-install-guide__title {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.ios-install-guide__close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  padding: 0;
+  line-height: 1;
+}
+
+.ios-install-guide__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ios-install-guide__step {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.ios-install-guide__step-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* ===== RWD - 平板 (768px) ===== */
+@media (min-width: 768px) {
+  body {
+    font-size: 17px;
+  }
+}
+
+/* ===== RWD - 桌機 (1280px) ===== */
+@media (min-width: 1280px) {
+  body {
+    background: linear-gradient(135deg, #E8F5E9 0%, #E3F2FD 100%);
+  }
+
+  /* 桌機版將主要內容居中顯示 */
+  .home-page,
+  .result-page {
+    padding-top: 4rem;
+  }
+}
+
+/* ===== 無障礙：focus-visible ===== */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ===== 字體大小響應式 ===== */
+@media (max-width: 375px) {
+  html {
+    font-size: 14px;
+  }
+}

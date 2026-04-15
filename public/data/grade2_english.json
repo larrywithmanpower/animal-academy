@@ -1,0 +1,53 @@
+{
+  "questions": [
+    {
+      "id": "g2e_001",
+      "question": "What is the plural of 'cat'?",
+      "image": null,
+      "options": ["cats", "cates", "caties", "cat"],
+      "answer": 0
+    },
+    {
+      "id": "g2e_002",
+      "question": "Choose the correct sentence:",
+      "image": null,
+      "options": ["She have a dog.", "She has a dog.", "She haves a dog.", "She having a dog."],
+      "answer": 1
+    },
+    {
+      "id": "g2e_003",
+      "question": "What day comes after Monday?",
+      "image": null,
+      "options": ["Sunday", "Saturday", "Wednesday", "Tuesday"],
+      "answer": 3
+    },
+    {
+      "id": "g2e_004",
+      "question": "Which word means 'happy'?",
+      "image": null,
+      "options": ["Sad", "Angry", "Joyful", "Tired"],
+      "answer": 2
+    },
+    {
+      "id": "g2e_005",
+      "question": "What is the opposite of 'cold'?",
+      "image": null,
+      "options": ["Cool", "Warm", "Hot", "Wet"],
+      "answer": 2
+    },
+    {
+      "id": "g2e_006",
+      "question": "Which month comes after January?",
+      "image": null,
+      "options": ["March", "December", "February", "April"],
+      "answer": 2
+    },
+    {
+      "id": "g2e_007",
+      "question": "I ___ to school every day.",
+      "image": null,
+      "options": ["going", "goes", "go", "gone"],
+      "answer": 2
+    }
+  ]
+}

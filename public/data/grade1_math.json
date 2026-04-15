@@ -1,0 +1,53 @@
+{
+  "questions": [
+    {
+      "id": "g1m_001",
+      "question": "2 + 3 = ?",
+      "image": null,
+      "options": ["4", "5", "6", "7"],
+      "answer": 1
+    },
+    {
+      "id": "g1m_002",
+      "question": "5 - 2 = ?",
+      "image": null,
+      "options": ["1", "2", "3", "4"],
+      "answer": 2
+    },
+    {
+      "id": "g1m_003",
+      "question": "有 3 隻貓加上 4 隻貓，共有幾隻貓？",
+      "image": null,
+      "options": ["5 隻", "6 隻", "7 隻", "8 隻"],
+      "answer": 2
+    },
+    {
+      "id": "g1m_004",
+      "question": "1 + 1 + 1 = ?",
+      "image": null,
+      "options": ["1", "2", "3", "4"],
+      "answer": 2
+    },
+    {
+      "id": "g1m_005",
+      "question": "10 - 5 = ?",
+      "image": null,
+      "options": ["3", "4", "5", "6"],
+      "answer": 2
+    },
+    {
+      "id": "g1m_006",
+      "question": "下列哪個數字最大？",
+      "image": null,
+      "options": ["3", "7", "5", "9"],
+      "answer": 3
+    },
+    {
+      "id": "g1m_007",
+      "question": "4 + 4 = ?",
+      "image": null,
+      "options": ["6", "7", "8", "9"],
+      "answer": 2
+    }
+  ]
+}

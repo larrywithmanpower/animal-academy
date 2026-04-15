@@ -1,0 +1,53 @@
+{
+  "questions": [
+    {
+      "id": "g3e_001",
+      "question": "Which sentence uses the past tense correctly?",
+      "image": null,
+      "options": ["She go to school.", "She went to school.", "She goes to school.", "She going to school."],
+      "answer": 1
+    },
+    {
+      "id": "g3e_002",
+      "question": "What is the comparative form of 'fast'?",
+      "image": null,
+      "options": ["more fast", "fastest", "faster", "fastly"],
+      "answer": 2
+    },
+    {
+      "id": "g3e_003",
+      "question": "Choose the correct preposition: The book is ___ the table.",
+      "image": null,
+      "options": ["in", "on", "at", "by"],
+      "answer": 1
+    },
+    {
+      "id": "g3e_004",
+      "question": "What does 'enormous' mean?",
+      "image": null,
+      "options": ["Very small", "Very fast", "Very huge", "Very quiet"],
+      "answer": 2
+    },
+    {
+      "id": "g3e_005",
+      "question": "We ___ breakfast at 7 o'clock every morning.",
+      "image": null,
+      "options": ["is eating", "are eat", "eat", "eats"],
+      "answer": 2
+    },
+    {
+      "id": "g3e_006",
+      "question": "Which word is an adjective?",
+      "image": null,
+      "options": ["Run", "Beautiful", "Quickly", "Eat"],
+      "answer": 1
+    },
+    {
+      "id": "g3e_007",
+      "question": "The movie was so ___ that I fell asleep.",
+      "image": null,
+      "options": ["exciting", "boring", "funny", "scary"],
+      "answer": 1
+    }
+  ]
+}

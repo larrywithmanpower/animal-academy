@@ -1,0 +1,53 @@
+{
+  "questions": [
+    {
+      "id": "g2m_001",
+      "question": "12 × 3 = ?",
+      "image": null,
+      "options": ["34", "36", "38", "40"],
+      "answer": 1
+    },
+    {
+      "id": "g2m_002",
+      "question": "45 ÷ 9 = ?",
+      "image": null,
+      "options": ["4", "5", "6", "7"],
+      "answer": 1
+    },
+    {
+      "id": "g2m_003",
+      "question": "1 公尺等於幾公分？",
+      "image": null,
+      "options": ["10", "100", "1000", "10000"],
+      "answer": 1
+    },
+    {
+      "id": "g2m_004",
+      "question": "25 + 37 = ?",
+      "image": null,
+      "options": ["52", "61", "62", "63"],
+      "answer": 2
+    },
+    {
+      "id": "g2m_005",
+      "question": "下列哪個是偶數？",
+      "image": null,
+      "options": ["13", "17", "21", "24"],
+      "answer": 3
+    },
+    {
+      "id": "g2m_006",
+      "question": "三角形有幾個角？",
+      "image": null,
+      "options": ["2", "3", "4", "5"],
+      "answer": 1
+    },
+    {
+      "id": "g2m_007",
+      "question": "100 - 43 = ?",
+      "image": null,
+      "options": ["55", "56", "57", "58"],
+      "answer": 2
+    }
+  ]
+}
