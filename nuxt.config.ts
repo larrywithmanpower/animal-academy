@@ -6,7 +6,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   app: {
-    baseURL
+    baseURL,
+    head: {
+      title: '動物學堂',
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ]
+    }
   },
 
   // 啟用模組
