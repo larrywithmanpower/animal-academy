@@ -1,75 +1,30 @@
-# Nuxt Minimal Starter
+# 動物學堂 Animal Academy
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+國小互動學習遊戲，支援一至三年級英文與數學題庫，具備 PWA 離線能力。
 
-## Setup
+## 線上體驗
 
-Make sure to install dependencies:
+**https://larrywithmanpower.github.io/animal-academy/**
+
+> 支援手機加入主畫面（PWA），可離線使用。
+
+## 功能特色
+
+- 一至三年級英文、數學題庫，各 50 題，每局隨機抽 10 題
+- 答對／答錯音效回饋（Web Audio API 合成，不需下載）
+- 點擊動物吉祥物互動：貓叫、狗吠、熊吼
+- 答題完成後顯示得分與明細
+- PWA：可安裝至手機主畫面、離線可用
+
+## 本地開發
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+npm run dev      # http://localhost:3000
+npm run build    # 正式環境打包
+npm run generate # 靜態輸出
 ```
 
-## Development Server
+## 部署
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+推送到 `main` 分支後，GitHub Actions 自動部署至 GitHub Pages。

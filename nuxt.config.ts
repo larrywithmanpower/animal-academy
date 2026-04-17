@@ -1,7 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const baseURL = process.env.NUXT_APP_BASE_URL ?? '/'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+
+  app: {
+    baseURL
+  },
 
   // 啟用模組
   modules: ['@vite-pwa/nuxt', '@pinia/nuxt'],
@@ -17,8 +23,8 @@ export default defineNuxtConfig({
       background_color: '#ffffff',
       display: 'standalone',
       orientation: 'portrait',
-      scope: '/',
-      start_url: '/',
+      scope: baseURL,
+      start_url: baseURL,
       icons: [
         {
           src: '/icons/icon-192x192.png',
