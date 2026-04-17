@@ -35,9 +35,28 @@
 
       <!-- 像素動物 + 題目區塊 -->
       <div class="quiz-main">
-        <!-- 動物角色（佔位圖） -->
-        <div class="animal-mascot" :class="{ 'animal-mascot--correct': answerState === 'correct', 'animal-mascot--wrong': answerState === 'wrong' }" aria-hidden="true">
-          {{ animalEmoji }}
+        <!-- 動物角色 -->
+        <div class="mascot-wrapper">
+          <Transition name="speech">
+            <div v-if="showSpeech" class="speech-bubble">{{ animalSpeech }}</div>
+          </Transition>
+          <div
+            class="animal-mascot"
+            :class="{
+              'animal-mascot--correct': answerState === 'correct',
+              'animal-mascot--wrong': answerState === 'wrong',
+              'animal-mascot--play': mascotBounce
+            }"
+            role="button"
+            tabindex="0"
+            :aria-label="`點我讓${animalName}說話`"
+            @click="handleMascotClick"
+            @keydown.enter="handleMascotClick"
+            @animationend="mascotBounce = false"
+          >
+            {{ animalEmoji }}
+          </div>
+          <p class="mascot-hint">點我 👆</p>
         </div>
 
         <!-- 題目 -->
@@ -86,11 +105,13 @@
 <script setup lang="ts">
 import { useQuizStore } from '~/stores/quiz'
 import { useProgress } from '~/composables/useProgress'
+import { useSound } from '~/composables/useSound'
 
 const route = useRoute()
 const router = useRouter()
 const quizStore = useQuizStore()
 const { saveProgress, clearProgress } = useProgress()
+const { playCorrect, playWrong, playAnimal } = useSound()
 
 const grade = computed(() => Number(route.params.grade))
 const subject = computed(() => route.params.subject as 'english' | 'math')
@@ -99,6 +120,10 @@ const subject = computed(() => route.params.subject as 'english' | 'math')
 const answerState = ref<'idle' | 'correct' | 'wrong'>('idle')
 // 題目進場動畫觸發
 const questionEnter = ref(false)
+// 吉祥物互動
+const mascotBounce = ref(false)
+const showSpeech = ref(false)
+let speechTimer: ReturnType<typeof setTimeout> | null = null
 
 const optionLetters = ['A', 'B', 'C', 'D']
 
@@ -114,13 +139,29 @@ const isLastQuestion = computed(
 
 // 根據年級顯示不同動物
 const animalEmoji = computed(() => {
-  const animals = {
-    1: '🐱',
-    2: '🐶',
-    3: '🐻'
-  }
-  return animals[grade.value as keyof typeof animals] ?? '🐾'
+  const animals: Record<number, string> = { 1: '🐱', 2: '🐶', 3: '🐻' }
+  return animals[grade.value] ?? '🐾'
 })
+
+const animalName = computed(() => {
+  const names: Record<number, string> = { 1: '小貓', 2: '小狗', 3: '小熊' }
+  return names[grade.value] ?? '動物'
+})
+
+const animalSpeech = computed(() => {
+  const sounds: Record<number, string> = { 1: '喵～ 🐱', 2: '汪汪！🐶', 3: '吼～ 🐻' }
+  return sounds[grade.value] ?? '...'
+})
+
+// 點擊吉祥物播放音效 + 顯示對話氣泡
+const handleMascotClick = () => {
+  playAnimal(grade.value)
+  mascotBounce.value = false
+  nextTick(() => { mascotBounce.value = true })
+  showSpeech.value = true
+  if (speechTimer) clearTimeout(speechTimer)
+  speechTimer = setTimeout(() => { showSpeech.value = false }, 1200)
+}
 
 // 取得選項按鈕樣式 class
 const getOptionClass = (index: number) => {
@@ -142,6 +183,7 @@ const handleAnswer = (index: number) => {
   quizStore.submitAnswer(index)
   const isCorrect = index === quizStore.currentQuestion?.answer
   answerState.value = isCorrect ? 'correct' : 'wrong'
+  if (isCorrect) { playCorrect() } else { playWrong() }
 
   // 儲存進度
   saveProgress({
@@ -270,9 +312,75 @@ watch(
   gap: 1rem;
 }
 
+/* 吉祥物容器 */
+.mascot-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.mascot-hint {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  user-select: none;
+}
+
+/* 對話氣泡 */
+.speech-bubble {
+  position: absolute;
+  top: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 2px solid var(--color-primary);
+  border-radius: 1.2rem;
+  padding: 0.35rem 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: var(--shadow-card);
+  pointer-events: none;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--color-primary);
+}
+
+/* 氣泡 Transition */
+.speech-enter-active, .speech-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.speech-enter-from {
+  opacity: 0;
+  transform: translateX(-50%) translateY(6px) scale(0.85);
+}
+.speech-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-4px) scale(0.9);
+}
+
 .animal-mascot {
   font-size: 5rem;
-  transition: transform 0.3s;
+  cursor: pointer;
+  transition: transform 0.15s;
+  user-select: none;
+}
+
+.animal-mascot:hover {
+  transform: scale(1.1);
+}
+
+.animal-mascot:active {
+  transform: scale(0.93);
 }
 
 .animal-mascot--correct {
@@ -281,6 +389,10 @@ watch(
 
 .animal-mascot--wrong {
   animation: wrongShake 0.5s ease;
+}
+
+.animal-mascot--play {
+  animation: playBounce 0.45s ease;
 }
 
 @keyframes correctBounce {
@@ -295,6 +407,14 @@ watch(
   40% { transform: translateX(8px); }
   60% { transform: translateX(-6px); }
   80% { transform: translateX(6px); }
+}
+
+@keyframes playBounce {
+  0% { transform: scale(1) rotate(0); }
+  25% { transform: scale(1.25) rotate(-8deg); }
+  55% { transform: scale(1.15) rotate(6deg); }
+  80% { transform: scale(1.05) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0); }
 }
 
 .question-card {
