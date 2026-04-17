@@ -18,11 +18,8 @@
     <!-- 幼幼班入口 -->
     <NuxtLink to="/kindergarten" class="kinder-btn fade-in-up">
       <span class="kinder-btn__icon">🐣</span>
-      <div class="kinder-btn__text">
-        <span class="kinder-btn__label">幼幼班</span>
-        <span class="kinder-btn__sub">看圖學英文單字</span>
-      </div>
-      <span class="kinder-btn__arrow">→</span>
+      <span class="kinder-btn__label">幼幼班</span>
+      <span class="kinder-btn__sub">Kindergarten</span>
     </NuxtLink>
 
     <!-- 年級選擇按鈕 -->
@@ -177,54 +174,37 @@ onMounted(() => {
 .grade-btn__label { font-size: 1.1rem; font-weight: 700; color: var(--color-text); }
 .grade-btn__sub { font-size: 0.8rem; color: var(--color-text-muted); }
 
-/* 幼幼班按鈕 */
+/* 幼幼班按鈕 — 與年級卡片同一設計語言，全寬 */
 .kinder-btn {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   width: 100%;
   max-width: 640px;
-  padding: 1.25rem 1.5rem;
-  background: linear-gradient(135deg, #FFF9C4, #FFE0B2);
-  border: 2px solid #FFB300;
+  padding: 2rem 1rem;
+  border: none;
+  border-top: 4px solid #E91E63;
   border-radius: var(--radius-lg);
-  text-decoration: none;
+  background: white;
   box-shadow: var(--shadow-card);
+  text-decoration: none;
+  cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   animation-delay: 0s !important;
 }
 
 .kinder-btn:hover,
 .kinder-btn:focus-visible {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-card-hover);
 }
 
-.kinder-btn__icon { font-size: 2.5rem; flex-shrink: 0; }
+.kinder-btn:active { transform: translateY(0); }
 
-.kinder-btn__text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.kinder-btn__label {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #E65100;
-}
-
-.kinder-btn__sub {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-}
-
-.kinder-btn__arrow {
-  font-size: 1.2rem;
-  color: #FFB300;
-  font-weight: 700;
-}
+.kinder-btn__icon  { font-size: 2.5rem; }
+.kinder-btn__label { font-size: 1.1rem; font-weight: 700; color: var(--color-text); }
+.kinder-btn__sub   { font-size: 0.8rem; color: var(--color-text-muted); }
 
 /* 進場動畫 */
 .fade-in-up {
@@ -252,5 +232,17 @@ onMounted(() => {
   }
 
   .grade-btn__icon { font-size: 2rem; }
+
+  .kinder-btn {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 1.25rem 1.5rem;
+    gap: 1rem;
+    max-width: 320px;
+    border-top: none;
+    border-left: 4px solid #E91E63;
+  }
+
+  .kinder-btn__icon { font-size: 2rem; }
 }
 </style>
