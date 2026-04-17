@@ -527,6 +527,7 @@ watch(
 
 .feedback-bar__icon { font-size: 1.5rem; flex-shrink: 0; }
 .feedback-bar__text { flex: 1; min-width: 0; font-weight: 600; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.feedback-bar .btn { width: auto; flex-shrink: 0; }
 
 /* Transition 動畫 */
 .feedback-enter-active,
