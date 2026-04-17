@@ -11,6 +11,7 @@ export default defineNuxtConfig({
       title: '動物學堂',
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/icons/icon-192x192.png' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
     }
