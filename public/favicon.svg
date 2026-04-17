@@ -1,4 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 綠色圓角背景 -->
   <rect width="64" height="64" rx="14" fill="#4CAF50"/>
-  <text x="32" y="46" text-anchor="middle" font-size="38" font-family="sans-serif">🐾</text>
+  <!-- 爪印：四個趾墊 -->
+  <ellipse cx="22" cy="18" rx="5" ry="6" fill="white"/>
+  <ellipse cx="34" cy="15" rx="5" ry="6" fill="white"/>
+  <ellipse cx="45" cy="20" rx="5" ry="6" fill="white"/>
+  <ellipse cx="50" cy="32" rx="5" ry="6" fill="white"/>
+  <!-- 主掌墊 -->
+  <ellipse cx="35" cy="42" rx="12" ry="10" fill="white"/>
 </svg>
