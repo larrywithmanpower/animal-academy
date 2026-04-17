@@ -29,18 +29,16 @@ export interface QuizRecord {
 
 // Store 狀態型別
 interface QuizState {
-  // 當前選擇的年級 (1-3)
   currentGrade: number | null
-  // 當前選擇的科目
   currentSubject: 'english' | 'math' | null
-  // 當前題庫
   questions: Question[]
-  // 當前題目索引
   currentIndex: number
-  // 答題記錄
   records: QuizRecord[]
-  // 是否正在載入題庫
   loading: boolean
+  // 本輪答錯的題目（供錯題重考用）
+  wrongQuestions: Question[]
+  // 是否處於錯題重考模式
+  isRetryMode: boolean
 }
 
 export const useQuizStore = defineStore('quiz', {
@@ -50,46 +48,42 @@ export const useQuizStore = defineStore('quiz', {
     questions: [],
     currentIndex: 0,
     records: [],
-    loading: false
+    loading: false,
+    wrongQuestions: [],
+    isRetryMode: false
   }),
 
   getters: {
-    // 當前題目
-    currentQuestion: (state): Question | null => {
-      return state.questions[state.currentIndex] ?? null
-    },
+    currentQuestion: (state): Question | null =>
+      state.questions[state.currentIndex] ?? null,
 
-    // 總題數
     totalQuestions: (state): number => state.questions.length,
 
-    // 正確題數
     correctCount: (state): number =>
       state.records.filter(r => r.isCorrect).length,
 
-    // 得分百分比
     scorePercent: (state): number => {
       if (state.records.length === 0) return 0
       const correct = state.records.filter(r => r.isCorrect).length
       return Math.round((correct / state.questions.length) * 100)
     },
 
-    // 是否已完成所有題目
     isFinished: (state): boolean =>
       state.records.length === state.questions.length && state.questions.length > 0
   },
 
   actions: {
-    // 設定年級
     setGrade(grade: number) {
       this.currentGrade = grade
     },
 
-    // 設定科目並載入題庫
     async loadQuiz(grade: number, subject: 'english' | 'math') {
       this.currentGrade = grade
       this.currentSubject = subject
       this.currentIndex = 0
       this.records = []
+      this.wrongQuestions = []
+      this.isRetryMode = false
       this.loading = true
 
       try {
@@ -104,39 +98,50 @@ export const useQuizStore = defineStore('quiz', {
       }
     },
 
-    // 提交答案
+    // 結算本輪答錯的題目（進結果頁前呼叫）
+    saveWrongQuestions() {
+      this.wrongQuestions = this.records
+        .filter(r => !r.isCorrect)
+        .map(r => this.questions.find(q => q.id === r.questionId))
+        .filter((q): q is Question => q !== undefined)
+    },
+
+    // 啟動錯題重考（直接用 wrongQuestions，不重新抓 JSON）
+    startRetry() {
+      this.questions = shuffle([...this.wrongQuestions])
+      this.currentIndex = 0
+      this.records = []
+      this.wrongQuestions = []
+      this.isRetryMode = true
+    },
+
     submitAnswer(selected: number) {
       const question = this.currentQuestion
       if (!question) return
-
       const isCorrect = selected === question.answer
-      this.records.push({
-        questionId: question.id,
-        selected,
-        isCorrect
-      })
+      this.records.push({ questionId: question.id, selected, isCorrect })
     },
 
-    // 前往下一題
     nextQuestion() {
       if (this.currentIndex < this.questions.length - 1) {
         this.currentIndex++
       }
     },
 
-    // 重置答題進度
     resetQuiz() {
       this.currentIndex = 0
       this.records = []
+      this.isRetryMode = false
     },
 
-    // 完整重置（回首頁）
     fullReset() {
       this.currentGrade = null
       this.currentSubject = null
       this.questions = []
       this.currentIndex = 0
       this.records = []
+      this.wrongQuestions = []
+      this.isRetryMode = false
     }
   }
 })

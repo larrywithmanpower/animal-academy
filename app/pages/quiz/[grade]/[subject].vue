@@ -213,11 +213,11 @@ const goNext = async () => {
   }
 }
 
-// 載入題庫，並嘗試恢復進度
+// 載入題庫（retry mode 直接用已存的錯題，不重抓 JSON）
 onMounted(async () => {
-  await quizStore.loadQuiz(grade.value, subject.value)
-
-  // 觸發進場動畫
+  if (!quizStore.isRetryMode) {
+    await quizStore.loadQuiz(grade.value, subject.value)
+  }
   questionEnter.value = true
   setTimeout(() => { questionEnter.value = false }, 400)
 })

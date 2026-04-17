@@ -143,7 +143,9 @@ const goNext = async () => {
 }
 
 onMounted(async () => {
-  await quizStore.loadQuiz(0, 'english')
+  if (!quizStore.isRetryMode) {
+    await quizStore.loadQuiz(0, 'english')
+  }
   questionEnter.value = true
   setTimeout(() => { questionEnter.value = false }, 400)
 })
