@@ -17,13 +17,10 @@ interface ProgressRecord {
 const PROGRESS_KEY = 'animal_academy_progress'
 
 export const useProgress = () => {
-  // 儲存進度
+  // 儲存進度（JSON 序列化去除 Vue Reactive Proxy，避免 IndexedDB DataCloneError）
   const saveProgress = async (data: Omit<ProgressRecord, 'savedAt'>) => {
     try {
-      const record: ProgressRecord = {
-        ...data,
-        savedAt: Date.now()
-      }
+      const record = JSON.parse(JSON.stringify({ ...data, savedAt: Date.now() })) as ProgressRecord
       await localforage.setItem(PROGRESS_KEY, record)
     } catch (err) {
       console.error('儲存進度失敗:', err)
