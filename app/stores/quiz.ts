@@ -1,5 +1,16 @@
 import { defineStore } from 'pinia'
 
+const QUESTIONS_PER_GAME = 10
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 // 題目資料型別
 export interface Question {
   id: string
@@ -84,7 +95,7 @@ export const useQuizStore = defineStore('quiz', {
       try {
         const fileName = `grade${grade}_${subject}.json`
         const data = await $fetch<{ questions: Question[] }>(`/data/${fileName}`)
-        this.questions = data.questions
+        this.questions = shuffle(data.questions).slice(0, QUESTIONS_PER_GAME)
       } catch (err) {
         console.error('載入題庫失敗:', err)
         this.questions = []

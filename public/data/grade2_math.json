@@ -1,53 +1,54 @@
 {
   "questions": [
-    {
-      "id": "g2m_001",
-      "question": "12 × 3 = ?",
-      "image": null,
-      "options": ["34", "36", "38", "40"],
-      "answer": 1
-    },
-    {
-      "id": "g2m_002",
-      "question": "45 ÷ 9 = ?",
-      "image": null,
-      "options": ["4", "5", "6", "7"],
-      "answer": 1
-    },
-    {
-      "id": "g2m_003",
-      "question": "1 公尺等於幾公分？",
-      "image": null,
-      "options": ["10", "100", "1000", "10000"],
-      "answer": 1
-    },
-    {
-      "id": "g2m_004",
-      "question": "25 + 37 = ?",
-      "image": null,
-      "options": ["52", "61", "62", "63"],
-      "answer": 2
-    },
-    {
-      "id": "g2m_005",
-      "question": "下列哪個是偶數？",
-      "image": null,
-      "options": ["13", "17", "21", "24"],
-      "answer": 3
-    },
-    {
-      "id": "g2m_006",
-      "question": "三角形有幾個角？",
-      "image": null,
-      "options": ["2", "3", "4", "5"],
-      "answer": 1
-    },
-    {
-      "id": "g2m_007",
-      "question": "100 - 43 = ?",
-      "image": null,
-      "options": ["55", "56", "57", "58"],
-      "answer": 2
-    }
+    { "id": "g2m_001", "question": "12 × 3 = ?", "image": null, "options": ["34", "36", "38", "40"], "answer": 1 },
+    { "id": "g2m_002", "question": "45 ÷ 9 = ?", "image": null, "options": ["4", "5", "6", "7"], "answer": 1 },
+    { "id": "g2m_003", "question": "1 公尺等於幾公分？", "image": null, "options": ["10", "100", "1000", "10000"], "answer": 1 },
+    { "id": "g2m_004", "question": "25 + 37 = ?", "image": null, "options": ["52", "61", "62", "63"], "answer": 2 },
+    { "id": "g2m_005", "question": "下列哪個是偶數？", "image": null, "options": ["13", "17", "21", "24"], "answer": 3 },
+    { "id": "g2m_006", "question": "三角形有幾個角？", "image": null, "options": ["2", "3", "4", "5"], "answer": 1 },
+    { "id": "g2m_007", "question": "100 - 43 = ?", "image": null, "options": ["55", "56", "57", "58"], "answer": 2 },
+    { "id": "g2m_008", "question": "6 × 7 = ?", "image": null, "options": ["38", "40", "42", "44"], "answer": 2 },
+    { "id": "g2m_009", "question": "56 ÷ 8 = ?", "image": null, "options": ["5", "6", "7", "8"], "answer": 2 },
+    { "id": "g2m_010", "question": "38 + 47 = ?", "image": null, "options": ["83", "84", "85", "86"], "answer": 2 },
+    { "id": "g2m_011", "question": "72 - 35 = ?", "image": null, "options": ["35", "36", "37", "38"], "answer": 2 },
+    { "id": "g2m_012", "question": "9 × 8 = ?", "image": null, "options": ["63", "70", "72", "81"], "answer": 2 },
+    { "id": "g2m_013", "question": "64 ÷ 8 = ?", "image": null, "options": ["6", "7", "8", "9"], "answer": 2 },
+    { "id": "g2m_014", "question": "正方形有幾個邊？", "image": null, "options": ["2", "3", "4", "5"], "answer": 2 },
+    { "id": "g2m_015", "question": "下列哪個是奇數？", "image": null, "options": ["12", "18", "25", "30"], "answer": 2 },
+    { "id": "g2m_016", "question": "1 公斤等於幾公克？", "image": null, "options": ["10", "100", "1000", "10000"], "answer": 2 },
+    { "id": "g2m_017", "question": "5 × 9 = ?", "image": null, "options": ["40", "42", "44", "45"], "answer": 3 },
+    { "id": "g2m_018", "question": "81 ÷ 9 = ?", "image": null, "options": ["7", "8", "9", "10"], "answer": 2 },
+    { "id": "g2m_019", "question": "63 + 28 = ?", "image": null, "options": ["89", "90", "91", "92"], "answer": 2 },
+    { "id": "g2m_020", "question": "7 × 6 = ?", "image": null, "options": ["40", "42", "44", "46"], "answer": 1 },
+    { "id": "g2m_021", "question": "90 - 47 = ?", "image": null, "options": ["41", "42", "43", "44"], "answer": 2 },
+    { "id": "g2m_022", "question": "4 × 8 = ?", "image": null, "options": ["28", "30", "32", "34"], "answer": 2 },
+    { "id": "g2m_023", "question": "36 ÷ 6 = ?", "image": null, "options": ["4", "5", "6", "7"], "answer": 2 },
+    { "id": "g2m_024", "question": "下列哪個圖形有 4 個角？", "image": null, "options": ["圓形", "三角形", "正方形", "五邊形"], "answer": 2 },
+    { "id": "g2m_025", "question": "1 小時等於幾分鐘？", "image": null, "options": ["30", "60", "90", "120"], "answer": 1 },
+    { "id": "g2m_026", "question": "3 × 9 = ?", "image": null, "options": ["24", "27", "30", "33"], "answer": 1 },
+    { "id": "g2m_027", "question": "48 + 36 = ?", "image": null, "options": ["82", "83", "84", "85"], "answer": 2 },
+    { "id": "g2m_028", "question": "7 × 8 = ?", "image": null, "options": ["48", "52", "56", "60"], "answer": 2 },
+    { "id": "g2m_029", "question": "72 ÷ 9 = ?", "image": null, "options": ["6", "7", "8", "9"], "answer": 2 },
+    { "id": "g2m_030", "question": "下列哪個數可以被 2 整除？", "image": null, "options": ["11", "13", "17", "20"], "answer": 3 },
+    { "id": "g2m_031", "question": "6 × 6 = ?", "image": null, "options": ["32", "34", "36", "38"], "answer": 2 },
+    { "id": "g2m_032", "question": "85 - 49 = ?", "image": null, "options": ["34", "35", "36", "37"], "answer": 2 },
+    { "id": "g2m_033", "question": "54 ÷ 6 = ?", "image": null, "options": ["7", "8", "9", "10"], "answer": 2 },
+    { "id": "g2m_034", "question": "4 × 7 = ?", "image": null, "options": ["24", "26", "28", "30"], "answer": 2 },
+    { "id": "g2m_035", "question": "下午三點也可以寫成？", "image": null, "options": ["3:00", "13:00", "15:00", "30:00"], "answer": 2 },
+    { "id": "g2m_036", "question": "9 × 6 = ?", "image": null, "options": ["48", "52", "54", "56"], "answer": 2 },
+    { "id": "g2m_037", "question": "126 + 38 = ?", "image": null, "options": ["162", "163", "164", "165"], "answer": 2 },
+    { "id": "g2m_038", "question": "5 × 5 = ?", "image": null, "options": ["20", "22", "25", "28"], "answer": 2 },
+    { "id": "g2m_039", "question": "100 - 67 = ?", "image": null, "options": ["31", "32", "33", "34"], "answer": 2 },
+    { "id": "g2m_040", "question": "3 × 8 = ?", "image": null, "options": ["20", "22", "24", "26"], "answer": 2 },
+    { "id": "g2m_041", "question": "下列哪個數字是 7 的倍數？", "image": null, "options": ["33", "35", "37", "38"], "answer": 1 },
+    { "id": "g2m_042", "question": "42 ÷ 7 = ?", "image": null, "options": ["4", "5", "6", "7"], "answer": 2 },
+    { "id": "g2m_043", "question": "2 × 2 × 2 = ?", "image": null, "options": ["4", "6", "8", "10"], "answer": 2 },
+    { "id": "g2m_044", "question": "67 + 45 = ?", "image": null, "options": ["110", "111", "112", "113"], "answer": 2 },
+    { "id": "g2m_045", "question": "下列哪個物品是圓形的？", "image": null, "options": ["積木", "課本", "硬幣", "課桌"], "answer": 2 },
+    { "id": "g2m_046", "question": "9 × 9 = ?", "image": null, "options": ["80", "81", "82", "83"], "answer": 1 },
+    { "id": "g2m_047", "question": "150 - 75 = ?", "image": null, "options": ["65", "70", "75", "80"], "answer": 2 },
+    { "id": "g2m_048", "question": "4 × 9 = ?", "image": null, "options": ["32", "34", "36", "38"], "answer": 2 },
+    { "id": "g2m_049", "question": "下列哪個數字介於 50 和 60 之間？", "image": null, "options": ["48", "55", "62", "70"], "answer": 1 },
+    { "id": "g2m_050", "question": "6 × 9 = ?", "image": null, "options": ["52", "54", "56", "58"], "answer": 1 }
   ]
 }

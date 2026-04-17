@@ -1,53 +1,54 @@
 {
   "questions": [
-    {
-      "id": "g3e_001",
-      "question": "Which sentence uses the past tense correctly?",
-      "image": null,
-      "options": ["She go to school.", "She went to school.", "She goes to school.", "She going to school."],
-      "answer": 1
-    },
-    {
-      "id": "g3e_002",
-      "question": "What is the comparative form of 'fast'?",
-      "image": null,
-      "options": ["more fast", "fastest", "faster", "fastly"],
-      "answer": 2
-    },
-    {
-      "id": "g3e_003",
-      "question": "Choose the correct preposition: The book is ___ the table.",
-      "image": null,
-      "options": ["in", "on", "at", "by"],
-      "answer": 1
-    },
-    {
-      "id": "g3e_004",
-      "question": "What does 'enormous' mean?",
-      "image": null,
-      "options": ["Very small", "Very fast", "Very huge", "Very quiet"],
-      "answer": 2
-    },
-    {
-      "id": "g3e_005",
-      "question": "We ___ breakfast at 7 o'clock every morning.",
-      "image": null,
-      "options": ["is eating", "are eat", "eat", "eats"],
-      "answer": 2
-    },
-    {
-      "id": "g3e_006",
-      "question": "Which word is an adjective?",
-      "image": null,
-      "options": ["Run", "Beautiful", "Quickly", "Eat"],
-      "answer": 1
-    },
-    {
-      "id": "g3e_007",
-      "question": "The movie was so ___ that I fell asleep.",
-      "image": null,
-      "options": ["exciting", "boring", "funny", "scary"],
-      "answer": 1
-    }
+    { "id": "g3e_001", "question": "Which sentence uses the past tense correctly?", "image": null, "options": ["She go to school.", "She went to school.", "She goes to school.", "She going to school."], "answer": 1 },
+    { "id": "g3e_002", "question": "What is the comparative form of 'fast'?", "image": null, "options": ["more fast", "fastest", "faster", "fastly"], "answer": 2 },
+    { "id": "g3e_003", "question": "Choose the correct preposition: The book is ___ the table.", "image": null, "options": ["in", "on", "at", "by"], "answer": 1 },
+    { "id": "g3e_004", "question": "What does 'enormous' mean?", "image": null, "options": ["Very small", "Very fast", "Very huge", "Very quiet"], "answer": 2 },
+    { "id": "g3e_005", "question": "We ___ breakfast at 7 o'clock every morning.", "image": null, "options": ["is eating", "are eat", "eat", "eats"], "answer": 2 },
+    { "id": "g3e_006", "question": "Which word is an adjective?", "image": null, "options": ["Run", "Beautiful", "Quickly", "Eat"], "answer": 1 },
+    { "id": "g3e_007", "question": "The movie was so ___ that I fell asleep.", "image": null, "options": ["exciting", "boring", "funny", "scary"], "answer": 1 },
+    { "id": "g3e_008", "question": "Which is the superlative form of 'tall'?", "image": null, "options": ["taller", "more tall", "tallest", "most tall"], "answer": 2 },
+    { "id": "g3e_009", "question": "They ___ been friends for ten years.", "image": null, "options": ["has", "have", "had", "having"], "answer": 1 },
+    { "id": "g3e_010", "question": "Which sentence is correct?", "image": null, "options": ["He didn't went.", "He didn't go.", "He doesn't went.", "He not go."], "answer": 1 },
+    { "id": "g3e_011", "question": "What does 'ancient' mean?", "image": null, "options": ["Very new", "Very small", "Very old", "Very fast"], "answer": 2 },
+    { "id": "g3e_012", "question": "The children ___ playing in the park when it rained.", "image": null, "options": ["are", "were", "was", "is"], "answer": 1 },
+    { "id": "g3e_013", "question": "Which word is an adverb?", "image": null, "options": ["Happy", "Happiness", "Happily", "Happier"], "answer": 2 },
+    { "id": "g3e_014", "question": "Choose the correct sentence:", "image": null, "options": ["She sings beautiful.", "She sings beautifully.", "She sings more beautiful.", "She beautiful sings."], "answer": 1 },
+    { "id": "g3e_015", "question": "What does 'brave' mean?", "image": null, "options": ["Afraid", "Tired", "Courageous", "Lazy"], "answer": 2 },
+    { "id": "g3e_016", "question": "___ it rains tomorrow, we will stay inside.", "image": null, "options": ["Although", "If", "Because", "But"], "answer": 1 },
+    { "id": "g3e_017", "question": "Which is the past tense of 'write'?", "image": null, "options": ["written", "writed", "wrote", "writes"], "answer": 2 },
+    { "id": "g3e_018", "question": "The dog is ___ than the cat. (bigger)", "image": null, "options": ["big", "more big", "bigger", "biggest"], "answer": 2 },
+    { "id": "g3e_019", "question": "What does 'frequently' mean?", "image": null, "options": ["Sometimes", "Never", "Often", "Rarely"], "answer": 2 },
+    { "id": "g3e_020", "question": "Which word is a synonym for 'start'?", "image": null, "options": ["End", "Finish", "Begin", "Stop"], "answer": 2 },
+    { "id": "g3e_021", "question": "She has ___ finished her homework.", "image": null, "options": ["never", "just", "ever", "yet"], "answer": 1 },
+    { "id": "g3e_022", "question": "What is the past tense of 'run'?", "image": null, "options": ["runned", "ran", "runs", "running"], "answer": 1 },
+    { "id": "g3e_023", "question": "The ___ mountain in the world is Mount Everest.", "image": null, "options": ["high", "higher", "highest", "most high"], "answer": 2 },
+    { "id": "g3e_024", "question": "We should ___ our hands before eating.", "image": null, "options": ["wash", "washes", "washing", "washed"], "answer": 0 },
+    { "id": "g3e_025", "question": "Which word is NOT a conjunction?", "image": null, "options": ["And", "But", "Because", "Beautiful"], "answer": 3 },
+    { "id": "g3e_026", "question": "What does 'exhausted' mean?", "image": null, "options": ["Very happy", "Very tired", "Very angry", "Very surprised"], "answer": 1 },
+    { "id": "g3e_027", "question": "They ___ to the museum last Saturday.", "image": null, "options": ["go", "goes", "gone", "went"], "answer": 3 },
+    { "id": "g3e_028", "question": "Which word is the antonym of 'ancient'?", "image": null, "options": ["Old", "Modern", "Big", "Small"], "answer": 1 },
+    { "id": "g3e_029", "question": "___ does the movie start?", "image": null, "options": ["What", "Where", "When", "Who"], "answer": 2 },
+    { "id": "g3e_030", "question": "Which is the past participle of 'break'?", "image": null, "options": ["broke", "broken", "breaked", "breaking"], "answer": 1 },
+    { "id": "g3e_031", "question": "What does 'generous' mean?", "image": null, "options": ["Selfish", "Kind and giving", "Angry", "Greedy"], "answer": 1 },
+    { "id": "g3e_032", "question": "Which word is a preposition?", "image": null, "options": ["Run", "Happy", "Before", "Quickly"], "answer": 2 },
+    { "id": "g3e_033", "question": "He is ___ soccer player in his class.", "image": null, "options": ["good", "better", "best", "the best"], "answer": 3 },
+    { "id": "g3e_034", "question": "What is the plural of 'tooth'?", "image": null, "options": ["tooths", "teeth", "toothes", "tooth"], "answer": 1 },
+    { "id": "g3e_035", "question": "Which sentence is in the present continuous tense?", "image": null, "options": ["She walked home.", "She walks home.", "She is walking home.", "She will walk home."], "answer": 2 },
+    { "id": "g3e_036", "question": "What does 'whisper' mean?", "image": null, "options": ["Shout loudly", "Speak very softly", "Sing a song", "Laugh out loud"], "answer": 1 },
+    { "id": "g3e_037", "question": "Which word means 'to fix'?", "image": null, "options": ["Break", "Repair", "Destroy", "Remove"], "answer": 1 },
+    { "id": "g3e_038", "question": "I have never ___ to Japan.", "image": null, "options": ["go", "went", "gone", "going"], "answer": 2 },
+    { "id": "g3e_039", "question": "Which is the correct question?", "image": null, "options": ["Where does she lives?", "Where she lives?", "Where does she live?", "Where is she live?"], "answer": 2 },
+    { "id": "g3e_040", "question": "What does 'curious' mean?", "image": null, "options": ["Bored", "Afraid", "Eager to know", "Tired"], "answer": 2 },
+    { "id": "g3e_041", "question": "The sun ___ in the east.", "image": null, "options": ["rise", "raised", "rises", "rising"], "answer": 2 },
+    { "id": "g3e_042", "question": "___ you ever tried sushi?", "image": null, "options": ["Do", "Did", "Have", "Are"], "answer": 2 },
+    { "id": "g3e_043", "question": "What is the opposite of 'victory'?", "image": null, "options": ["Win", "Success", "Defeat", "Prize"], "answer": 2 },
+    { "id": "g3e_044", "question": "Which word correctly completes: 'The cake smells ___'?", "image": null, "options": ["good", "well", "goodly", "nicely"], "answer": 0 },
+    { "id": "g3e_045", "question": "Which is a compound noun?", "image": null, "options": ["Beautiful", "Quickly", "Sunflower", "Running"], "answer": 2 },
+    { "id": "g3e_046", "question": "What does 'predict' mean?", "image": null, "options": ["To forget", "To say what will happen", "To explain", "To disagree"], "answer": 1 },
+    { "id": "g3e_047", "question": "Choose the correct sentence:", "image": null, "options": ["He is more taller than me.", "He is taller than me.", "He is the taller than me.", "He taller than me."], "answer": 1 },
+    { "id": "g3e_048", "question": "Which word is a synonym of 'angry'?", "image": null, "options": ["Calm", "Furious", "Gentle", "Cheerful"], "answer": 1 },
+    { "id": "g3e_049", "question": "The students ___ a test last Friday.", "image": null, "options": ["take", "takes", "took", "taking"], "answer": 2 },
+    { "id": "g3e_050", "question": "What does 'transparent' mean?", "image": null, "options": ["Very dark", "You can see through it", "Very heavy", "Very colorful"], "answer": 1 }
   ]
 }
