@@ -127,6 +127,14 @@ let speechTimer: ReturnType<typeof setTimeout> | null = null
 
 const optionLetters = ['A', 'B', 'C', 'D']
 
+// setup 階段同步重置，避免首次 render 命中上一輪殘留的 isFinished 狀態
+if (!quizStore.isRetryMode) {
+  quizStore.records = []
+  quizStore.questions = []
+  quizStore.currentIndex = 0
+  quizStore.loading = true
+}
+
 // 進度百分比
 const progressPercent = computed(
   () => ((quizStore.currentIndex + 1) / quizStore.totalQuestions) * 100
