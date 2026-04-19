@@ -39,6 +39,9 @@ interface QuizState {
   wrongQuestions: Question[]
   // 是否處於錯題重考模式
   isRetryMode: boolean
+  // 計時（排行榜用）
+  startedAt: number | null
+  finishedAt: number | null
 }
 
 export const useQuizStore = defineStore('quiz', {
@@ -50,7 +53,9 @@ export const useQuizStore = defineStore('quiz', {
     records: [],
     loading: false,
     wrongQuestions: [],
-    isRetryMode: false
+    isRetryMode: false,
+    startedAt: null,
+    finishedAt: null
   }),
 
   getters: {
@@ -69,7 +74,13 @@ export const useQuizStore = defineStore('quiz', {
     },
 
     isFinished: (state): boolean =>
-      state.records.length === state.questions.length && state.questions.length > 0
+      state.records.length === state.questions.length && state.questions.length > 0,
+
+    // 本輪完成所花的毫秒數（未結束則為 0）
+    durationMs: (state): number => {
+      if (!state.startedAt || !state.finishedAt) return 0
+      return state.finishedAt - state.startedAt
+    }
   },
 
   actions: {
@@ -90,6 +101,9 @@ export const useQuizStore = defineStore('quiz', {
         const fileName = `grade${grade}_${subject}.json`
         const data = await $fetch<{ questions: Question[] }>(`/data/${fileName}`)
         this.questions = shuffle(data.questions).slice(0, QUESTIONS_PER_GAME)
+        // 題庫載入完成即開始計時
+        this.startedAt = Date.now()
+        this.finishedAt = null
       } catch (err) {
         console.error('載入題庫失敗:', err)
         this.questions = []
@@ -113,6 +127,9 @@ export const useQuizStore = defineStore('quiz', {
       this.records = []
       this.wrongQuestions = []
       this.isRetryMode = true
+      // 重考不計入排行榜，清空計時
+      this.startedAt = null
+      this.finishedAt = null
     },
 
     submitAnswer(selected: number) {
@@ -120,6 +137,10 @@ export const useQuizStore = defineStore('quiz', {
       if (!question) return
       const isCorrect = selected === question.answer
       this.records.push({ questionId: question.id, selected, isCorrect })
+      // 最後一題答完記錄結束時間
+      if (this.records.length === this.questions.length && this.startedAt) {
+        this.finishedAt = Date.now()
+      }
     },
 
     nextQuestion() {
@@ -142,6 +163,8 @@ export const useQuizStore = defineStore('quiz', {
       this.records = []
       this.wrongQuestions = []
       this.isRetryMode = false
+      this.startedAt = null
+      this.finishedAt = null
     }
   }
 })

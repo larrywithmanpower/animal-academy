@@ -28,6 +28,54 @@
       <p>🎉 全部答對了！真棒！</p>
     </div>
 
+    <!-- 個人排行榜（僅正式挑戰顯示，重考不入榜） -->
+    <div v-if="showLeaderboard" class="leaderboard">
+      <h2 class="leaderboard__title">🏆 個人最佳紀錄</h2>
+
+      <!-- 進榜 / 未進榜訊息 -->
+      <div
+        v-if="currentRank"
+        class="leaderboard__banner leaderboard__banner--rank"
+      >
+        🎉 刷新紀錄！你現在是第 {{ currentRank }} 名 {{ rankIconFor(currentRank) }}
+      </div>
+      <div
+        v-else-if="missingBy > 0"
+        class="leaderboard__banner leaderboard__banner--miss"
+      >
+        距離第 3 名還差 <strong>{{ missingBy }}</strong> 題，再挑戰一次吧！
+      </div>
+
+      <!-- 三個名次卡 -->
+      <div class="leaderboard__list">
+        <div
+          v-for="slot in RANK_TITLES"
+          :key="slot.rank"
+          class="rank-card"
+          :class="{
+            'rank-card--filled': !!board[slot.rank - 1],
+            'rank-card--current': currentRank === slot.rank,
+            [`rank-card--r${slot.rank}`]: true
+          }"
+        >
+          <div class="rank-card__header">
+            <span class="rank-card__icon">{{ slot.icon }}</span>
+            <div class="rank-card__meta">
+              <span class="rank-card__rank">第 {{ slot.rank }} 名</span>
+              <span class="rank-card__title">{{ slot.title }}</span>
+            </div>
+          </div>
+          <div v-if="board[slot.rank - 1]" class="rank-card__stats">
+            <span class="rank-card__score">
+              {{ board[slot.rank - 1]!.score }} / {{ board[slot.rank - 1]!.total }}
+            </span>
+            <span class="rank-card__time">⏱ {{ formatDuration(board[slot.rank - 1]!.durationMs) }}</span>
+          </div>
+          <div v-else class="rank-card__empty">尚未有人上榜</div>
+        </div>
+      </div>
+    </div>
+
     <!-- 答題明細 -->
     <div class="records-list">
       <h2 class="records-title">答題明細</h2>
@@ -60,17 +108,74 @@
 
 <script setup lang="ts">
 import { useQuizStore } from '~/stores/quiz'
+import { useLeaderboard, type LeaderboardEntry } from '~/composables/useLeaderboard'
 
 const router = useRouter()
 const quizStore = useQuizStore()
+const { getLeaderboard, submitRecord, formatDuration, RANK_TITLES } = useLeaderboard()
 
-onMounted(() => {
+// 排行榜狀態
+const board = ref<LeaderboardEntry[]>([])
+const currentRank = ref<number | null>(null)
+// 是否顯示排行榜區塊：錯題重考、grade/subject 不完整時不顯示
+const showLeaderboard = computed(() =>
+  !quizStore.isRetryMode
+  && quizStore.currentGrade != null
+  && quizStore.currentSubject != null
+  && quizStore.totalQuestions > 0
+)
+
+// 未進榜時，與第 3 名的題數差
+const missingBy = computed(() => {
+  if (currentRank.value) return 0
+  if (board.value.length < 3) return 0
+  const third = board.value[2]
+  if (!third) return 0
+  const diff = third.score - quizStore.correctCount
+  return diff > 0 ? diff : 0
+})
+
+const rankIconFor = (rank: number) =>
+  RANK_TITLES.find(r => r.rank === rank)?.icon ?? ''
+
+onMounted(async () => {
   if (quizStore.records.length === 0) {
     router.push('/')
     return
   }
   // 結算答錯的題目
   quizStore.saveWrongQuestions()
+
+  // 寫入排行榜（僅正式挑戰，須有 grade + subject 且完整答完）
+  if (
+    !quizStore.isRetryMode
+    && quizStore.currentGrade != null
+    && quizStore.currentSubject != null
+    && quizStore.records.length === quizStore.totalQuestions
+  ) {
+    const entry: LeaderboardEntry = {
+      score: quizStore.correctCount,
+      total: quizStore.totalQuestions,
+      durationMs: quizStore.durationMs,
+      playedAt: Date.now()
+    }
+    const result = await submitRecord(
+      quizStore.currentGrade,
+      quizStore.currentSubject,
+      entry
+    )
+    board.value = result.board
+    currentRank.value = result.rank
+  } else if (
+    quizStore.currentGrade != null
+    && quizStore.currentSubject != null
+  ) {
+    // 重考情境：只讀榜不寫入
+    board.value = await getLeaderboard(
+      quizStore.currentGrade,
+      quizStore.currentSubject
+    )
+  }
 })
 
 const wrongCount = computed(() => quizStore.wrongQuestions.length)
@@ -222,6 +327,125 @@ const replayQuiz = () => {
 
 .btn--retry:hover { opacity: 0.9; transform: translateY(-1px); }
 .btn--retry:active { transform: translateY(0); }
+
+/* 排行榜 */
+.leaderboard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: slideUp 0.4s ease 0.3s both;
+}
+
+.leaderboard__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.leaderboard__banner {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.leaderboard__banner--rank {
+  background: linear-gradient(135deg, #FFF9C4, #FFECB3);
+  color: #F57F17;
+  animation: shine 1.2s ease infinite;
+}
+
+.leaderboard__banner--miss {
+  background: #FFF3E0;
+  color: #E65100;
+}
+
+.leaderboard__banner--miss strong { color: #BF360C; }
+
+@keyframes shine {
+  0%, 100% { box-shadow: 0 0 0 rgba(255, 193, 7, 0); }
+  50% { box-shadow: 0 0 16px rgba(255, 193, 7, 0.55); }
+}
+
+.leaderboard__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rank-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  border-left: 4px solid transparent;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.rank-card--r1 { border-left-color: #FFC107; }
+.rank-card--r2 { border-left-color: #90A4AE; }
+.rank-card--r3 { border-left-color: #D7A66A; }
+
+.rank-card--current {
+  background: linear-gradient(135deg, #FFF9C4, #FFFDE7);
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.25);
+}
+
+.rank-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rank-card__icon { font-size: 2rem; }
+
+.rank-card__meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  flex: 1;
+}
+
+.rank-card__rank {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.rank-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.rank-card__stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 2.75rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.rank-card__score {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.rank-card__empty {
+  padding-left: 2.75rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
 
 /* 答題明細 */
 .records-list { width: 100%; }
