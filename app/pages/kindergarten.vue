@@ -6,12 +6,6 @@
       <p>載入題庫中...</p>
     </div>
 
-    <!-- 完成過渡 -->
-    <div v-else-if="quizStore.isFinished" class="finished-state">
-      <div class="finished-mascot">🎉</div>
-      <p>答題完成！計算結果中...</p>
-    </div>
-
     <!-- 主畫面 -->
     <template v-else-if="quizStore.currentQuestion">
       <!-- 頂部 -->
@@ -95,6 +89,12 @@ const selectedIndex = ref(-1)
 
 const btnColors = ['blue', 'orange', 'purple', 'green']
 
+// 進入頁面同步重置答題狀態，避免上一輪殘留的 records 讓 isFinished=true
+// 在 PWA 上 Service Worker 可能讓 onMounted 的 loadQuiz 卡住，導致畫面停在「結算中」
+if (!quizStore.isRetryMode) {
+  quizStore.resetQuiz()
+}
+
 const progressPercent = computed(
   () => ((quizStore.currentIndex + 1) / quizStore.totalQuestions) * 100
 )
@@ -150,15 +150,6 @@ onMounted(async () => {
   setTimeout(() => { questionEnter.value = false }, 400)
 })
 
-watch(
-  () => quizStore.isFinished,
-  async (finished) => {
-    if (finished) {
-      await clearProgress()
-      setTimeout(() => router.push('/result'), 800)
-    }
-  }
-)
 </script>
 
 <style scoped>
