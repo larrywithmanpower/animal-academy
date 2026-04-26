@@ -109,10 +109,12 @@
 <script setup lang="ts">
 import { useQuizStore } from '~/stores/quiz'
 import { useLeaderboard, type LeaderboardEntry } from '~/composables/useLeaderboard'
+import { useHistory } from '~/composables/useHistory'
 
 const router = useRouter()
 const quizStore = useQuizStore()
 const { getLeaderboard, submitRecord, formatDuration, RANK_TITLES } = useLeaderboard()
+const { addRecord: addHistoryRecord } = useHistory()
 
 // 排行榜狀態
 const board = ref<LeaderboardEntry[]>([])
@@ -166,6 +168,16 @@ onMounted(async () => {
     )
     board.value = result.board
     currentRank.value = result.rank
+
+    // 寫入完整答題歷史（每次都記）
+    await addHistoryRecord({
+      grade: quizStore.currentGrade,
+      subject: quizStore.currentSubject,
+      score: quizStore.correctCount,
+      total: quizStore.totalQuestions,
+      durationMs: quizStore.durationMs,
+      playedAt: entry.playedAt
+    })
   } else if (
     quizStore.currentGrade != null
     && quizStore.currentSubject != null
